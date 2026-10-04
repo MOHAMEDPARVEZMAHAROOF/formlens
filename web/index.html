@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FormLens — read every field on a paper form</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">F</span><span>FormLens</span>
+    <span class="tag">OpenCV AI Competition 2026</span></div>
+  <nav>
+    <button data-tab="analyze" class="active">Analyze</button>
+    <button data-tab="batch">Batch</button>
+    <button data-tab="gallery">Gallery</button>
+    <button data-tab="history">History</button>
+  </nav>
+  <div id="status-badge" class="badge" title="Backend status">…</div>
+</header>
+
+<main>
+  <!-- ANALYZE -->
+  <section id="tab-analyze" class="tab active">
+    <div class="hero">
+      <h1>Read every field on a paper form</h1>
+      <p class="sub">Upload a photo or scan. OpenCV&nbsp;5 straightens the page, finds
+        checkboxes, reads OMR bubbles, checks the signature box — and shows you
+        exactly what it found, with confidence on every field.</p>
+    </div>
+    <div id="dropzone" class="dropzone" tabindex="0" role="button"
+         aria-label="Upload a form image">
+      <div class="dz-icon">⇪</div>
+      <div class="dz-title">Drop a form photo here, or click to browse</div>
+      <div class="dz-sub">PNG · JPG · WebP · max 12 MB</div>
+      <input id="file-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+    </div>
+    <div id="analyze-loading" class="loading hidden">
+      <div class="spinner"></div>
+      <div>Running the OpenCV pipeline — rectify → detect → classify…</div>
+    </div>
+    <div id="analyze-empty" class="empty">
+      <div class="empty-title">No analysis yet</div>
+      <p>Upload a form to see the annotated result and per-field breakdown.
+        Want a quick try? Open the <button class="link" data-goto="gallery">sample gallery</button>.</p>
+    </div>
+    <div id="analyze-result" class="hidden"></div>
+  </section>
+
+  <!-- BATCH -->
+  <section id="tab-batch" class="tab">
+    <div class="hero">
+      <h1>Batch processing</h1>
+      <p class="sub">Drop up to 20 forms. FormLens analyzes each one and rolls up
+        a summary table you can drill into.</p>
+    </div>
+    <div id="batch-dropzone" class="dropzone" tabindex="0" role="button"
+         aria-label="Upload multiple form images">
+      <div class="dz-icon">⇪</div>
+      <div class="dz-title">Drop up to 20 form photos here, or click to browse</div>
+      <div class="dz-sub">Each file is analyzed independently</div>
+      <input id="batch-input" type="file" multiple
+             accept="image/png,image/jpeg,image/webp" hidden>
+    </div>
+    <div id="batch-loading" class="loading hidden">
+      <div class="spinner"></div><div id="batch-progress">Analyzing…</div>
+    </div>
+    <div id="batch-empty" class="empty">
+      <div class="empty-title">Nothing queued</div>
+      <p>Batch results will appear here with per-file summaries.</p>
+    </div>
+    <div id="batch-result" class="hidden"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="tab-gallery" class="tab">
+    <div class="hero">
+      <h1>Sample gallery</h1>
+      <p class="sub">Self-authored synthetic test forms — computer-drawn fixtures,
+        not real documents. One click runs the full pipeline on any of them.</p>
+    </div>
+    <div id="gallery-grid" class="gallery-grid"></div>
+    <div id="gallery-empty" class="empty hidden">
+      <div class="empty-title">No samples found</div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section id="tab-history" class="tab">
+    <div class="hero">
+      <h1>Analysis history</h1>
+      <p class="sub">Every analysis is stored locally. Filter, revisit, download
+        the annotated image, or export the JSON report.</p>
+    </div>
+    <div class="filters card">
+      <input id="f-q" type="search" placeholder="Search filename…">
+      <input id="f-from" type="date" aria-label="From date">
+      <input id="f-to" type="date" aria-label="To date">
+      <input id="f-min" type="number" min="0" placeholder="Min fields" aria-label="Minimum fields">
+      <button id="f-apply">Apply</button>
+      <button id="f-clear" class="ghost">Clear</button>
+    </div>
+    <div id="history-list"></div>
+    <div id="history-empty" class="empty">
+      <div class="empty-title">No analyses yet</div>
+      <p>Run your first analysis and it will show up here.</p>
+    </div>
+  </section>
+</main>
+
+<div id="lightbox" class="lightbox hidden" role="dialog" aria-label="Annotated image">
+  <img id="lightbox-img" alt="Annotated form">
+  <button id="lightbox-close" aria-label="Close">✕</button>
+</div>
+
+<div id="toast" class="toast hidden" role="alert"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
