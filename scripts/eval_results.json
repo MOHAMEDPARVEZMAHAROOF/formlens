@@ -1,0 +1,30 @@
+[
+  {
+    "fixture": "form_clean",
+    "correct": 8,
+    "total": 8,
+    "rectified": true,
+    "ambiguous": 0
+  },
+  {
+    "fixture": "form_rotated",
+    "correct": 8,
+    "total": 8,
+    "rectified": true,
+    "ambiguous": 0
+  },
+  {
+    "fixture": "form_shadow",
+    "correct": 8,
+    "total": 8,
+    "rectified": true,
+    "ambiguous": 0
+  },
+  {
+    "fixture": "form_messy",
+    "correct": 8,
+    "total": 8,
+    "rectified": false,
+    "ambiguous": 2
+  }
+]
