@@ -1,0 +1,15 @@
+{
+  "fixture": "form_rotated",
+  "synthetic": true,
+  "checkboxes_checked": [
+    0,
+    1,
+    3
+  ],
+  "bubble_answers": [
+    2,
+    2,
+    1
+  ],
+  "signature_present": false
+}

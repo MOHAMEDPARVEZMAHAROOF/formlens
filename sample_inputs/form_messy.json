@@ -1,0 +1,11 @@
+{
+  "fixture": "form_messy",
+  "synthetic": true,
+  "checkboxes_checked": [],
+  "bubble_answers": [
+    null,
+    3,
+    0
+  ],
+  "signature_present": false
+}

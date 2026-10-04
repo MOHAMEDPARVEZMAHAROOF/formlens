@@ -1,0 +1,13 @@
+{
+  "fixture": "form_shadow",
+  "synthetic": true,
+  "checkboxes_checked": [
+    2
+  ],
+  "bubble_answers": [
+    0,
+    3,
+    2
+  ],
+  "signature_present": true
+}
