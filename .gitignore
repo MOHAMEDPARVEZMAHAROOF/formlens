@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Runtime data (created by the app)
+data/
+
+# Video build intermediates
+video/s1.mp4
+video/s2.mp4
+video/s3.mp4
+video/s4.mp4
+video/s5.mp4
+video/s6.mp4
+video/s7.mp4
+video/s8.mp4
+video/s9.mp4
+video/clip_*.webm
+video/check/
+video/vo/*.mp3
+video/concat.txt
+
+# OS
+.DS_Store
